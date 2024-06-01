@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "I2Proxy",
+  "version": "19.7",
+  "description": "A web browser extension for accessing I2P network anonymously",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "proxy",
+    "storage",
+    "history",
+    "browsingData",
+    "tabs",
+    "scripting",
+    "cookies",
+    "activeTab",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "optional_permissions": [],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "i2p-proxy@nemesis",
+      "strict_min_version": "91.1.0"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon/icon.png"
+    }
+  },
+  "icons": {
+    "48": "icon/icon.png"
+  },
+  "page_action": {
+    "default_icon": {
+      "48": "icon/padlock.png"
+    },
+    "default_title": "padlock"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
