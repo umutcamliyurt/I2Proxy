@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         padlockLabel.textContent = '🔒 Connected to Eepsite';
         padlockLabel.style.color = 'lime';
 
-        if (url && /\.i2p\/?$/.test(url)) {
+        if (url && /\.i2p(\/|$)/.test(url)) {
             document.body.appendChild(padlockLabel);
         } else {
             padlockLabel.remove();

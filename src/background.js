@@ -12,16 +12,15 @@ chrome.tabs.onActivated.addListener(activeInfo => {
 
 function updateBadge(tabId, url) {
     console.log("Checking URL for padlock icon:", url);
-    if (url && /\.i2p\/?$/.test(url)) {
-        console.log("URL ends with .i2p:", url);
+    if (url && /\.i2p(\/|$)/.test(url)) {
+        console.log("URL domain ends with .i2p:", url);
         chrome.action.setBadgeBackgroundColor({ color: "#000000", tabId: tabId });
         chrome.action.setBadgeText({ text: "🔒", tabId: tabId });
     } else {
-        console.log("URL does not end with .i2p:", url);
+        console.log("URL domain does not end with .i2p:", url);
         chrome.action.setBadgeText({ text: "", tabId: tabId });
     }
 }
-
 
 // Configuration flags
 let isBlockingJS = true;
